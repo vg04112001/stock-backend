@@ -56,7 +56,7 @@ exports.getStocks = async (req, res) => {
     // Execute the query with optional sorting
     let stocks;
     if (sort) {
-      stocks = await Stock.find(query).sort(sort); // Sort by field (e.g., 'name', 'price', etc.)
+      stocks = (await Stock.find(query).sort(sort)).reverse(); // Sort by field (e.g., 'name', 'price', etc.)
     } else {
       stocks = await Stock.find(query); // No sorting applied if no sort parameter
     }
